@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module sccpu_dataflow(clock, resetn, inst, mem, pc, wmem, alu_out, data, alua, alub, ra, res, alu_mem);
+module sccpu_dataflow(clock, resetn, inst, mem, pc, wmem, alu_out, data, alua, alub, ra, res, alu_mem, wreg, wn);
 	input [31:0] inst, mem;
 	input clock, resetn;
 	output [31:0] pc, alu_out, data;
@@ -27,6 +27,8 @@ module sccpu_dataflow(clock, resetn, inst, mem, pc, wmem, alu_out, data, alua, a
 	output ra;
 	output res;
 	output alu_mem;
+	output wreg;
+	output wn;
 	wire [31:0] p4, bpc, npc, adr, ra, alua, alub, res, alu_mem;
 	wire [3:0] aluc;
 	wire [4:0] reg_dest, wn;

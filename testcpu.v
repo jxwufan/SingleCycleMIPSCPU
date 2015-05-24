@@ -37,11 +37,14 @@ module testcpu;
 	wire [31:0] data;
 	wire [31:0] ra;
 	wire [31:0] alu_mem;
+	wire wreg;
+	wire [4:0] wn;
 	
 	wire [31:0] rom [0:31];
 	wire [31:0] res;
 	wire [31:0] alua, alub;
 	assign rom[0] = 32'h00000827;
+	//assign rom[1] = 32'h00010820;
 	assign rom[1] = 32'h0001102a;
 	assign rom[2] = 32'h00421820;
 	assign rom[3] = 32'h00622020;
@@ -90,7 +93,9 @@ module testcpu;
 		.alub(alub),
 		.ra(ra),
 		.res(res),
-		.alu_mem(alu_mem)
+		.alu_mem(alu_mem),
+		.wreg(wreg),
+		.wn(wn)
 	);
 	integer i;
 	initial begin
@@ -112,7 +117,6 @@ module testcpu;
 			mem = 0;
 			clock = !clock;
 			if (clock == 1) inst = rom[pc >> 2];
-			if (clock == 0) inst = rom[pc >> 2];
 			#40;
 		end
 	end
